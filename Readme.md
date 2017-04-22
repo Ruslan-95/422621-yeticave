@@ -1,7 +1,7 @@
-# Личный проект «YetiCave» 
+# Личный проект «YetiCave»
 
 * Студент: [Ruslan Muradov](https://up.htmlacademy.ru/php/1/user/422621).
-* Наставник: `Неизвестно`.
+* Наставник: [Игорь Дерябин](https://htmlacademy.ru/profile/id212247).
 
 ---
 
