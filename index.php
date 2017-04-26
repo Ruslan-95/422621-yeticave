@@ -16,12 +16,12 @@ $lot_time_remaining = date("h:i", mktime(0,0, $i)); // шаблон "D,d M Y h:i
 
 $staffs = array('Доски и лыжи', 'Крепления', 'Ботинки', 'Одежда', 'Инструменты', 'Разное');
 $ms= array(
-        array('name'=>"2014 Rossignol District Snowboard", "category" => "Доски и лыжи", "price" => 10999, "url_image" =>1),
-        array('name'=>'DC Ply Mens 2016/2017 Snowboard', 'category'=>'Доски и лыжи', 'price'=>159999, 'url_image'=>2),
-        array('name'=>'Крепления Union Contact Pro 2015 года размер L/XL', 'category'=>'Крепления', 'price'=>8000, 'url_image'=>3),
-        array('name'=>'Ботинки для сноуборда DC Mutiny Charocal', 'category'=>'Ботинки', 'price'=>10999, 'url_image'=>4),
-        array('name'=>'Куртка для сноуборда DC Mutiny Charocal', 'category'=>'Одежда', 'price'=>7500, 'url_image'=>5),
-        array('name'=>'Маска Oakley Canopy', 'category'=>'Разное', 'price'=>5400 ,'url_image'=>6)
+        array('name'=>"2014 Rossignol District Snowboard", "category" => "Доски и лыжи", "price" => 10999, "url_image" =>'img/lot-1.jpg'),
+        array('name'=>'DC Ply Mens 2016/2017 Snowboard', 'category'=>'Доски и лыжи', 'price'=>159999, 'url_image'=>'img/lot-2.jpg'),
+        array('name'=>'Крепления Union Contact Pro 2015 года размер L/XL', 'category'=>'Крепления', 'price'=>8000, 'url_image'=>'img/lot-3.jpg'),
+        array('name'=>'Ботинки для сноуборда DC Mutiny Charocal', 'category'=>'Ботинки', 'price'=>10999, 'url_image'=>'img/lot-4.jpg'),
+        array('name'=>'Куртка для сноуборда DC Mutiny Charocal', 'category'=>'Одежда', 'price'=>7500, 'url_image'=>'img/lot-5.jpg'),
+        array('name'=>'Маска Oakley Canopy', 'category'=>'Разное', 'price'=>5400 ,'url_image'=>'img/lot-6.jpg')
 );?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -88,18 +88,16 @@ $ms= array(
 
             <select class="lots__select">
                 <option>Все категории</option>
-                <?php foreach ($staffs as $staff){
-                    echo "<option>$staff</option>";}
-                    unset($staff);?>
+                <?php foreach ($staffs as $staff): ?>
+                    <option><?=$staff?></option>
+                <?php endforeach; ?>
             </select>
         </div>
         <ul class="lots__list">
-            <?php foreach ($ms as $m){
-                "<li>$m</li>";
-            ?>
+            <?php foreach ($ms as $m){?>
             <li class="lots__item lot">
                 <div class="lot__image">
-                    <img src="img/lot-<?=$m["url_image"]?>.jpg" width="350" height="260" alt="Сноуборд">
+                    <img src="<?=$m["url_image"]?>" width="350" height="260" alt="Сноуборд">
                 </div>
                 <div class="lot__info">
                     <span class="lot__category"><?=$m['category']?></span>
