@@ -10,10 +10,10 @@ $tomorrow = strtotime('tomorrow midnight');
 
 // временная метка для настоящего времени
 $now = time();
-$i = $tomorrow - $now;
 // далее нужно вычислить оставшееся время до начала следующих суток и записать его в переменную $lot_time_remaining
-$lot_time_remaining = date("h:i", mktime(0,0, $i)); // шаблон "D,d M Y h:i:s"
-?>
+$minutes = floor($tomorrow - $now)/60;
+$hours = floor($minutes / 60);
+$lot_time_remaining = $hours.":".$minutes % 60;?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
