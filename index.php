@@ -14,6 +14,9 @@ $now = time();
 $minutes = floor($tomorrow - $now)/60;
 $hours = floor($minutes / 60);
 $lot_time_remaining = $hours.":".$minutes % 60;?>
+
+//$lot_time_remaining = date('H:i' ,$tomorrow - $now / 3600*3);
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
