@@ -1,5 +1,4 @@
 <?php
-include_once('templates');
 // ставки пользователей, которыми надо заполнить таблицу
 $bets = [
     ['name' => 'Иван',
@@ -15,6 +14,8 @@ $bets = [
         'price' => 10000,
         'ts' => strtotime('last week')]
 ];
+
+require_once ('templates');
 ?>
 
 <!DOCTYPE html>
