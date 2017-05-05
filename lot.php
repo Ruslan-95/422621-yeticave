@@ -14,17 +14,6 @@ $bets = [
         'price' => 10000,
         'ts' => strtotime('last week')]
 ];
-
-function canUhelpMe ($itime) {
-    $newts = time() - $itime;
-    if ($newts > 86400) {
-        return date("d.m.y", $itime) . " в " . date("H.i", $itime);
-    } elseif ($newts < 3600) {
-        return intval(date("i", $newts)) . " минут назад";
-    } else {
-        return date("G", $newts) . " часов назад";
-    }
-
 require_once ('templates');
 ?>
 

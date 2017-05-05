@@ -65,13 +65,14 @@
                 <div class="history">
                     <h3>История ставок (<span><?php echo count($bets)?></span>)</h3>
                     <table class="history__list">
-                        <?php foreach ($bets as $bet){?>
+                        <?php
+                        foreach($bets as $bet){?>
                             <tr class="history__item">
-                            <td class="history__name"><?=$bet['name']?></td>
-                            <td class="history__price"><?=$bet['price']?>р</td>
-                            <td class="history__time"><?=canUhelpMe($bet['ts'])?></td>
-                            </tr><? } unset($bet);?>
-
+                                <td class="history__name"><?=$bet['name']?></td>
+                                <td class="history__price"><?=$bet['price']?>р</td>
+                                <td class="history__time"><?=bets_time($bet['ts'])?>
+                            </tr>
+                        <?}?>
                     </table>
                 </div>
             </div>
