@@ -12,21 +12,32 @@ function includeTemplate($template, $array){
 	return $html;
 }
 
-function lot_time_remaining()
-{
-// устанавливаем часовой пояс в Московское время
-date_default_timezone_set('Europe/Moscow');
-// записать в эту переменную оставшееся время в этом формате (ЧЧ:ММ)
-$lot_time_remaining = "00:00";
-// временная метка для полночи следующего дня
-$tomorrow = strtotime('tomorrow midnight');
-// временная метка для настоящего времени
-$now = time();
-// далее нужно вычислить оставшееся время до начала следующих суток и записать его в переменную $lot_time_remaining
-//$minutes = floor($tomorrow - $now)/60;
-//$hours = floor($minutes / 60);
-//$lot_time_remaining = $hours.":".$minutes % 60;
+/**
+ * Функция lot_time_remaining() рассчитывает кол-во оставшегося времени до полуночи(мск)
+ */
+function lot_time_remaining(){
+    date_default_timezone_set('Europe/Moscow');
+    $tomorrow = strtotime('tomorrow midnight');
+    $now = time();
+    $minutes = floor($tomorrow - $now)/60;
+    $hours = floor($minutes / 60);
+    $lot_time_remaining = $hours.":".$minutes % 60;
+    return $lot_time_remaining;}
 
-$lot_time_remaining = date('H:i' ,$tomorrow - $now / 3600*3);
-	return $lot_time_remaining;}
-//$lot_time_remaining = date('H:i' ,$tomorrow - $now / 3600*3);
+
+/**
+ *функция bets_time преобразует временные метки в человекообразный формат и выдает значаения в определенно заданом формате
+ */
+function bets_time($ts){
+    {
+        $minutes = (time() - $ts) / 60;
+        $hours = $minutes / 60;
+        if ($hours > 24) {
+            $result = date("d.m.y в H:i", $ts);
+        } else if ($minutes > 60) {
+            $result = $hours . " часов назад";
+        } else {
+            $result = $minutes . " минут назад";
+        }
+        return $result;
+    }}
