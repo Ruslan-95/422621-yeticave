@@ -1,37 +1,23 @@
 <?php
-// ставки пользователей, которыми надо заполнить таблицу
-$bets = [
-    ['name' => 'Иван',
-        'price' => 11500,
-        'ts' => strtotime('-' . rand(1, 50) .' minute')],
-    ['name' => 'Константин',
-        'price' => 11000,
-        'ts' => strtotime('-' . rand(1, 18) .' hour')],
-    ['name' => 'Евгений',
-        'price' => 10500,
-        'ts' => strtotime('-' . rand(25, 50) .' hour')],
-    ['name' => 'Семён',
-        'price' => 10000,
-        'ts' => strtotime('last week')]
-];
-require_once ('templates');
+require_once 'functions.php';
+include_once 'data.php';
+$valid = is_numeric($_GET['id']) && array_key_exists($_GET['id'], $stuff_details);
+if (!$valid) {
+    header("HTTP/1.0 404 Not Found");
+    exit("<h1>404… Увы, но эта страница где-то затерялась в галактике Интернета</h1>");
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>DC Ply Mens 2016/2017 Snowboard</title>
+    <title><?= $stuff_details[$_GET['id']]['name']; ?></title>
     <link href="css/normalize.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-
 <?=includeTemplate('header.php',[]);?>
-
-<?=includeTemplate('lot_main.php', ['bets' => $bets]);?>
-
+<?=includeTemplate('lot_main.php', ['bets' => $bets, 'stuff_details'=> $stuff_details[$_GET['id']]]);?>
 <?=includeTemplate('footer.php',[]);?>
-
 </body>
 </html>
