@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'functions.php';
 include_once 'data.php';
 $valid = is_numeric($_GET['id']) && array_key_exists($_GET['id'], $stuff_details);
