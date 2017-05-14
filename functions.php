@@ -41,3 +41,17 @@ function bets_time($ts){
         }
         return $result;
     }}
+
+
+/**
+ * @param $new_bet десериализирует данные этого массива
+ * @return array|mixed возвращает результат
+ */
+function decode_array()
+{
+    $new_bet = [];
+    if (isset($_COOKIE["my_bets"])) {
+        $new_bet = json_decode($_COOKIE["new_bet"], true);
+    }
+    return $new_bet;
+}
