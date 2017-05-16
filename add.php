@@ -59,7 +59,7 @@ if (!empty($_POST)) {
 <?php if (empty($_POST) || !empty($errors)): ?>
     <?= includeTemplate('add_lot.php', ['stuff_categories' => $stuff_categories, 'errors' => $errors, 'file' => $file]) ?>
 <?php else: ?>
-    <?= includeTemplate('lot_main.php', ['stuff_details' => $stuff_details, 'bets' => $bets]) ?>
+    <?= includeTemplate('lot_main.php', ['lot' => $lot, 'bets' => $bets]) ?>
 <?php endif; ?>
 <?= includeTemplate('footer.php',[]) ?>
 </body>
