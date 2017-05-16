@@ -50,7 +50,7 @@ function bets_time($ts){
 function decode_array()
 {
     $new_bet = [];
-    if (isset($_COOKIE["my_bets"])) {
+    if (isset($_COOKIE["new_bet"])) {
         $new_bet = json_decode($_COOKIE["new_bet"], true);
     }
     return $new_bet;
