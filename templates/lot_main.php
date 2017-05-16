@@ -25,7 +25,7 @@ include_once 'data.php';
         </ul>
     </nav>
     <section class="lot-item container">
-        <h2><?=$stuff_details['name']?></h2>
+        <h2><?=$lot['name']?></h2>
         <div class="lot-item__content">
             <div class="lot-item__left">
                 <div class="lot-item__image">
@@ -58,7 +58,7 @@ include_once 'data.php';
                             Мин. ставка <span>12 000 р</span>
                         </div>
                     </div>
-                    <form class="lot-item__form" action="https://echo.htmlacademy.ru" method="post">
+                    <form class="lot-item__form" action="lot.php?id=<?= $_SERVER['REQUEST_URI'] ?>" method="post">
                         <p class="lot-item__form-item">
                             <label for="cost">Ваша ставка</label>
                             <input id="cost" type="number" name="cost" placeholder="12 000">
