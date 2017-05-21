@@ -25,13 +25,13 @@ include_once 'data.php';
         </ul>
     </nav>
     <section class="lot-item container">
-        <h2><?=$lot['name']?></h2>
+        <h2><?=$product_id['name']?></h2>
         <div class="lot-item__content">
             <div class="lot-item__left">
                 <div class="lot-item__image">
-                    <img src="<?=$stuff_details['url_image']?>" width="730" height="548" alt="Сноуборд">
+                    <img src="<?=$product_id['url_image']?>" width="730" height="548" alt="Сноуборд">
                 </div>
-                <p class="lot-item__category">Категория: <span><?=$stuff_details['category']?></span></p>
+                <p class="lot-item__category">Категория: <span><?=$product_id['category']?></span></p>
                 <p class="lot-item__description">Легкий маневренный сноуборд, готовый дать жару в любом парке, растопив
                     снег
                     мощным щелчкоми четкими дугами. Стекловолокно Bi-Ax, уложенное в двух направлениях, наделяет этот
@@ -52,21 +52,22 @@ include_once 'data.php';
                     <div class="lot-item__cost-state">
                         <div class="lot-item__rate">
                             <span class="lot-item__amount">Текущая цена</span>
-                            <span class="lot-item__cost"><?=$stuff_details['price']?></span>
+                            <span class="lot-item__cost"><?=$product_id['price']?></span>
                         </div>
                         <div class="lot-item__min-cost">
                             Мин. ставка <span>12 000 р</span>
                         </div>
                     </div>
-                    <form class="lot-item__form" action="lot.php?id=<?= $_SERVER['REQUEST_URI'] ?>" method="post">
+
+                    <form class="lot-item__form" action="<?=$id?>" method="post">
                         <p class="lot-item__form-item">
                             <label for="cost">Ваша ставка</label>
                             <input id="cost" type="number" name="cost" placeholder="12 000">
                         </p>
                         <button type="submit" class="button">Сделать ставку</button>
                     </form>
+                    <?php endif; ?>
                 </div>
-                <?php endif;?>
                 <div class="history">
                     <h3>История ставок (<span>4</span>)</h3>
                     <table class="history__list">
