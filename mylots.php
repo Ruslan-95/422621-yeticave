@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'functions.php';
+include_once 'functions.php';
 include_once 'data.php';
 $new_bet= decode_array();
 ?>
@@ -14,7 +14,11 @@ $new_bet= decode_array();
 </head>
 <body>
 <?=includeTemplate('header.php',[]);?>
-<?=includeTemplate('mylots.php', ['stuff_details' => $stuff_details, 'new_bet' => $new_bet]);?>
+<?=includeTemplate('mylots.php', [
+ //   'stuff_details' => $stuff_details,
+    'new_bet' => $new_bet,
+    'product_id' => $product_id,
+]);?>
 <?=includeTemplate('footer.php',[]);?>
 </body>
 </html>
