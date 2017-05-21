@@ -45,10 +45,10 @@
                     <?= $bet['cost'] ?>
                 </td>
                 <td class="rates__time">
-                    <?= bets_time($old['time']) ?>
+                    <?= bets_time($bet['time']) ?>
                 </td>
-                <?endforeach;?>
             </tr>
+            <?endforeach;?>
         </table>
     </section>
 </main>
