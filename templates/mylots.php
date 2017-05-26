@@ -32,8 +32,11 @@
                     <div class="rates__img">
                         <img src="<?= $bet['img'] ?>" width="54" height="40" alt="Сноуборд">
                     </div>
-                    <h3 class="rates__title"><a href="lot.php?id=<?=$id?>">
-                            <?= $bet['name'] ?></a></h3>
+                    <h3 class="rates__title">
+                        <a href="lot.php?id=<?=$bet['id']?>">
+                            <?= $bet['name']?>
+                        </a>
+                    </h3>
                 </td>
                 <td class="rates__category">
                     <?= $bet['category'] ?>
