@@ -2,7 +2,6 @@
 session_start();
 require_once 'functions.php';
 include_once 'data.php';
-
 $id = isset($_GET['id']) ? intval($_GET['id']) : null;
 $product_id = $stuff_details[$id];
 if (!$id) {

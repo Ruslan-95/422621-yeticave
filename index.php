@@ -3,6 +3,7 @@ session_start();
 include_once 'data.php';
 require_once 'functions.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -12,7 +13,6 @@ require_once 'functions.php';
    <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-
 <?=includeTemplate('header.php',[]);?>
 
 <?=includeTemplate('main.php', ['stuff_categories' => $stuff_categories, 'stuff_details' => $stuff_details]);?>
