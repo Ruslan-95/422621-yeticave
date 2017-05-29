@@ -17,8 +17,9 @@ CREATE TABLE `lot`(
   `name` CHAR(128),
   `img` CHAR(128),
   `price` INT,
-  `favorit` INT
-  `step_price` INT
+  `favorit` INT,
+  `step_price` INT,
+  `description` TEXT
 );
 
 CREATE TABLE `bet`(
