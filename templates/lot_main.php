@@ -1,3 +1,6 @@
+<?php
+include_once 'data.php';
+?>
 <main>
     <nav class="nav">
         <ul class="nav__list container">
@@ -22,13 +25,13 @@
         </ul>
     </nav>
     <section class="lot-item container">
-        <h2>DC Ply Mens 2016/2017 Snowboard</h2>
+        <h2><?=$product_id['name']?></h2>
         <div class="lot-item__content">
             <div class="lot-item__left">
                 <div class="lot-item__image">
-                    <img src="img/lot-image.jpg" width="730" height="548" alt="Сноуборд">
+                    <img src="<?=$product_id['url_image']?>" width="730" height="548" alt="Сноуборд">
                 </div>
-                <p class="lot-item__category">Категория: <span>Доски и лыжи</span></p>
+                <p class="lot-item__category">Категория: <span><?=$product_id['category']?></span></p>
                 <p class="lot-item__description">Легкий маневренный сноуборд, готовый дать жару в любом парке, растопив
                     снег
                     мощным щелчкоми четкими дугами. Стекловолокно Bi-Ax, уложенное в двух направлениях, наделяет этот
@@ -41,6 +44,7 @@
                     равнодушным.</p>
             </div>
             <div class="lot-item__right">
+                <?php if (isset($_SESSION['user'])) : ?>
                 <div class="lot-item__state">
                     <div class="lot-item__timer timer">
                         10:54:12
@@ -48,22 +52,24 @@
                     <div class="lot-item__cost-state">
                         <div class="lot-item__rate">
                             <span class="lot-item__amount">Текущая цена</span>
-                            <span class="lot-item__cost">11 500</span>
+                            <span class="lot-item__cost"><?=$product_id['price']?></span>
                         </div>
                         <div class="lot-item__min-cost">
                             Мин. ставка <span>12 000 р</span>
                         </div>
                     </div>
-                    <form class="lot-item__form" action="https://echo.htmlacademy.ru" method="post">
+
+                    <form class="lot-item__form" action="<?=$id?>" method="post">
                         <p class="lot-item__form-item">
                             <label for="cost">Ваша ставка</label>
                             <input id="cost" type="number" name="cost" placeholder="12 000">
                         </p>
                         <button type="submit" class="button">Сделать ставку</button>
                     </form>
+                    <?php endif; ?>
                 </div>
                 <div class="history">
-                    <h3>История ставок (<span><?php echo count($bets)?></span>)</h3>
+                    <h3>История ставок (<span>4</span>)</h3>
                     <table class="history__list">
                         <?php
                         foreach($bets as $bet){?>
@@ -71,6 +77,7 @@
                                 <td class="history__name"><?=$bet['name']?></td>
                                 <td class="history__price"><?=$bet['price']?>р</td>
                                 <td class="history__time"><?=bets_time($bet['ts'])?>
+
                             </tr>
                         <?}?>
                     </table>
