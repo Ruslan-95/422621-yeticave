@@ -2,10 +2,11 @@
 SELECT * FROM category;
 
 --получить самые новые, открытые лоты. Каждый лот должен включать название, стартовую цену, ссылку на изображение, цену, количество ставок, название категории;
-SELECT 'name', 'price', 'img', 'bet.price', count(bet.id), category.name FROM lot
+SELECT `name`, `price`, `img`, `bet.price`, count(bet.id), category.name FROM lot
   JOIN category ON lot.category_id = category.id
   JOIN bet ON lot.id = bet.lot_id
-WHERE now() < date_final AND lot.winner_id=FALSE;
+WHERE now() < date_final AND lot.winner_id=FALSE
+ORDER BY lot.date DESC;
 
 --найти лот по его названию или описанию;
 SELECT * FROM lot
