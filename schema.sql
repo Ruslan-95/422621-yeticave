@@ -12,12 +12,14 @@ CREATE TABLE `lot`(
   `category_id` INT,
   `user_id` INT,
   `winner_id` INT,
-  `data` DATETIME,
+  `date` DATETIME,
   `date_final` DATETIME,
   `name` CHAR(128),
   `img` CHAR(128),
-  `rate` INT,
-  `favorit` INT
+  `price` INT,
+  `favorit` INT,
+  `step_price` INT,
+  `description` TEXT
 );
 
 CREATE TABLE `bet`(
@@ -25,7 +27,7 @@ CREATE TABLE `bet`(
   `lot_id` INT,
   `user_id` INT,
   `date_add` DATETIME,
-  `rate` INT
+  `price` INT
 );
 
 CREATE TABLE `users` (
