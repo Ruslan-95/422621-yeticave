@@ -36,7 +36,7 @@ CREATE TABLE `users` (
   `name` CHAR(255),
   `date` CHAR(255),
   `avatar` CHAR(128),
-  `password` CHAR(32),
+  `password` CHAR(255),
   `contact` TEXT
 );
 

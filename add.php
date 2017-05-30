@@ -1,24 +1,21 @@
 <?php
 session_start();
-include_once 'functions.php';
+require_once 'functions.php';
 include_once 'data.php';
-
-if (empty($session['user'])) {
+if (empty($_SESSION['user'])) {
     header('HTTP/1.1 403 Forbidden');
     exit();
 }
 $errors = [];
 $file = [];
-$post = valide($_POST);
-$file = valide($_FILES);
-if (!empty($post)) {
-    foreach ($post as $key => $value) {
-        $post[$key] = htmlspecialchars($value);
+if (!empty($_POST)) {
+    foreach ($_POST as $key => $value) {
+        $_POST[$key] = htmlspecialchars($value);
         if (empty($value)) {
             $errors[$key] = 'Заполните это поле';
             continue;
         }
-        if (in_array($key, ['lot-date']) && !date(d.M.y, $value)) {
+        if (in_array($key, ['lot-date'])  && !date(d.M.y, $value)) {
             $errors[$key] = 'Некорректная дата';
         }
     }
@@ -33,11 +30,11 @@ if (!empty($post)) {
     }
     if (empty($errors)) {
         $lot = [
-            'name' => $post['lot-name'],
-            'category' => $post['category'],
-            'price' => $post["lot-rate"],
+            'name' => $_POST['lot-name'],
+            'category' => $_POST['category'],
+            'price' => $_POST["lot-rate"],
             'url_image' => 'img/' . $file['name'],
-            'description' => $post['message']
+            'description' => $_POST['message']
         ];
     }
 }
