@@ -1,45 +1,43 @@
 <?php
 session_start();
-require_once 'functions.php';
+include_once 'functions.php';
 include_once 'data.php';
 
-if (empty($_SESSION['user'])) {
+if (empty($session['user'])) {
     header('HTTP/1.1 403 Forbidden');
     exit();
 }
-
 $errors = [];
 $file = [];
-
-if (!empty($_POST)) {
-    foreach ($_POST as $key => $value) {
-        $_POST[$key] = htmlspecialchars($value);
-
+$post = valide($_POST);
+$file = valide($_FILES);
+if (!empty($post)) {
+    foreach ($post as $key => $value) {
+        $post[$key] = htmlspecialchars($value);
         if (empty($value)) {
             $errors[$key] = 'Заполните это поле';
             continue;
         }
-
-        if (in_array($key, ['lot-date']) && !is_numeric($value)) {
+        if (in_array($key, ['lot-date']) && !date(d.M.y, $value)) {
             $errors[$key] = 'Некорректная дата';
         }
     }
     if (isset($_FILES['lot-file'])) {
         $file = $_FILES['lot-file'];
         if ($file['type'] == 'image/jpeg') {
-           $uploadetfile = move_uploaded_file($file['tmp_name'], 'img/' . $file['name']);
-           is_uploaded_file($uploadetfile);
+            $uploadetfile = move_uploaded_file($file['tmp_name'], 'img/' . $file['name']);
+            is_uploaded_file($uploadetfile);
         } else {
             $errors['lot-file'] = 'Загрузите фото в формате jpeg';
         }
     }
     if (empty($errors)) {
         $lot = [
-            'name' => $_POST['lot-name'],
-            'category' => $_POST['category'],
-            'price' => $_POST["lot-rate"],
+            'name' => $post['lot-name'],
+            'category' => $post['category'],
+            'price' => $post["lot-rate"],
             'url_image' => 'img/' . $file['name'],
-            'description' => $_POST['message']
+            'description' => $post['message']
         ];
     }
 }

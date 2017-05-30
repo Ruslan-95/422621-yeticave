@@ -55,3 +55,23 @@ function decode_array()
     }
     return $new_bet;
 }
+
+
+function valide($obj)
+{
+    if (isset($obj)) {
+
+        if (is_array($obj)) {
+            $objNew = [];
+
+            foreach ($obj as $key => $value) {
+                $objNew[valide($key)] = valide($value);
+            }
+
+            return $objNew;
+
+        } else {
+            return htmlspecialcharsEx($obj);
+        }
+    }
+}
