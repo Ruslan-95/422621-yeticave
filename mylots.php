@@ -3,6 +3,7 @@ session_start();
 include_once 'functions.php';
 include_once 'data.php';
 $new_bet= decode_array();
+checkAuth();
 ?>
 <!DOCTYPE html>
 <html lang="ru">

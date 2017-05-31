@@ -1,11 +1,9 @@
 <?php
 session_start();
-require_once 'functions.php';
+include_once 'functions.php';
 include_once 'data.php';
-if (empty($_SESSION['user'])) {
-    header('HTTP/1.1 403 Forbidden');
-    exit();
-}
+checkAuth();
+
 $errors = [];
 $file = [];
 if (!empty($_POST)) {
