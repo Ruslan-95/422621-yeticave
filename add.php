@@ -2,33 +2,28 @@
 session_start();
 require_once 'functions.php';
 include_once 'data.php';
-
 if (empty($_SESSION['user'])) {
     header('HTTP/1.1 403 Forbidden');
     exit();
 }
-
 $errors = [];
 $file = [];
-
 if (!empty($_POST)) {
     foreach ($_POST as $key => $value) {
         $_POST[$key] = htmlspecialchars($value);
-
         if (empty($value)) {
             $errors[$key] = 'Заполните это поле';
             continue;
         }
-
-        if (in_array($key, ['lot-date']) && !is_numeric($value)) {
+        if (in_array($key, ['lot-date'])  && !date(d.M.y, $value)) {
             $errors[$key] = 'Некорректная дата';
         }
     }
     if (isset($_FILES['lot-file'])) {
         $file = $_FILES['lot-file'];
         if ($file['type'] == 'image/jpeg') {
-           $uploadetfile = move_uploaded_file($file['tmp_name'], 'img/' . $file['name']);
-           is_uploaded_file($uploadetfile);
+            $uploadetfile = move_uploaded_file($file['tmp_name'], 'img/' . $file['name']);
+            is_uploaded_file($uploadetfile);
         } else {
             $errors['lot-file'] = 'Загрузите фото в формате jpeg';
         }

@@ -12,7 +12,7 @@ CREATE TABLE `lot`(
   `category_id` INT,
   `user_id` INT,
   `winner_id` INT,
-  `date` DATETIME,
+  `date_add` DATETIME,
   `date_final` DATETIME,
   `name` CHAR(128),
   `img` CHAR(128),
@@ -36,7 +36,7 @@ CREATE TABLE `users` (
   `name` CHAR(255),
   `date` CHAR(255),
   `avatar` CHAR(128),
-  `password` CHAR(32),
+  `password` CHAR(255),
   `contact` TEXT
 );
 
