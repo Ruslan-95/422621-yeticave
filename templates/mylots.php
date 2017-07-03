@@ -1,57 +1,42 @@
-
-<main>
+<main class="main">
     <nav class="nav">
         <ul class="nav__list container">
-            <li class="nav__item">
-                <a href="all-lots.html">Доски и лыжи</a>
-            </li>
-            <li class="nav__item">
-                <a href="all-lots.html">Крепления</a>
-            </li>
-            <li class="nav__item">
-                <a href="all-lots.html">Ботинки</a>
-            </li>
-            <li class="nav__item">
-                <a href="all-lots.html">Одежда</a>
-            </li>
-            <li class="nav__item">
-                <a href="all-lots.html">Инструменты</a>
-            </li>
-            <li class="nav__item">
-                <a href="all-lots.html">Разное</a>
-            </li>
+            <?php foreach ($data['categories'] as $item): ?>
+                <li class="nav__item">
+                    <a href=""><?= $item['name'] ?></a>
+                </li>
+            <?php endforeach; ?>
         </ul>
     </nav>
     <section class="rates container">
         <h2>Мои ставки</h2>
+        <?php if (!empty($data['my_rates'])): ?>
         <table class="rates__list">
-            <?php foreach ($new_bet as $bet) : ?>
-
-            <tr class="rates__item">
-                <td class="rates__info">
-                    <div class="rates__img">
-                        <img src="<?= $bet['img'] ?>" width="54" height="40" alt="Сноуборд">
-                    </div>
-                    <h3 class="rates__title">
-                        <a href="lot.php?id=<?=$bet['id']?>">
-                            <?= $bet['name']?>
-                        </a>
-                    </h3>
-                </td>
-                <td class="rates__category">
-                    <?= $bet['category'] ?>
-                </td>
-                <td class="rates__timer">
+            <?php foreach ($data['my_rates'] as $item): ?>
+                <tr class="rates__item">
+                    <td class="rates__info">
+                        <div class="rates__img">
+                            <img src="<?= $item['image'] ?>" width="54" height="40" alt="<?= $item['name'] ?>">
+                        </div>
+                        <h3 class="rates__title"><a href="lot.php?id=<?= $item['lot_id'] ?>"><?= $item['name'] ?></a></h3>
+                    </td>
+                    <td class="rates__category">
+                        <?= $item['category'] ?>
+                    </td>
+                    <td class="rates__timer">
                     <div class="timer timer--finishing"><?=lot_time_remaining()?></div>
-                </td>
-                <td class="rates__price">
-                    <?= $bet['cost'] ?>
-                </td>
-                <td class="rates__time">
+                    </td>
+                    <td class="rates__price">
+                        <?= $item['price'] ?>
+                    </td>
+                    <td class="rates__time">
                     <?= bets_time($bet['time']) ?>
-                </td>
-            </tr>
-            <?endforeach;?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
         </table>
+        <?php else: ?>
+            <h3>В данный момент у вас нет ставок</h3>
+        <?php endif; ?>
     </section>
 </main>

@@ -2,8 +2,15 @@
 
 session_start();
 
-require 'functions.php';
-include 'userdata.php';
+include_once  'functions.php';
+//include_once 'userdata.php';
+
+// проверяем подключение к базе
+$resource = checkConnectToDatabase();
+
+// категории товаров
+$sql_for_category = 'SELECT * FROM category';
+$data['categories'] = getData($resource, $sql_for_category);
 
 $errors = [];
 
@@ -19,8 +26,8 @@ if (!empty($_POST)) {
 
     if (empty($errors)) {
         $user_found = false;
-
-        foreach ($users as $user) {
+        $user = $data['user'];
+        foreach ($data as $user) {
             if ($_POST['email'] == $user['email']) {
                 $user_found = true;
 
@@ -55,9 +62,9 @@ if (!empty($_POST)) {
 
 <?= includeTemplate('header.php', []); ?>
 
-<?= includeTemplate('login.php', ['errors' => $errors]); ?>
+<?= includeTemplate('login.php', ['errors' => $errors, $data]); ?>
 
-<?= includeTemplate('footer.php', []); ?>
+<?= includeTemplate('footer.php', ['categories' => $data['categories']]); ?>
 
 </body>
 </html>

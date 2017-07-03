@@ -1,8 +1,12 @@
 <?php
 session_start();
 include_once 'functions.php';
-include_once 'data.php';
+
 checkAuth();
+
+// категории товаров
+$sql_for_category = 'SELECT * FROM category';
+$data['categories'] = getData($resource, $sql_for_category);
 
 $errors = [];
 $file = [];

@@ -1,10 +1,10 @@
 CREATE DATABASE `YetiCave`;
 
-USE `YetiCave`;
 
-CREATE TABLE `category`(
-  `id` INT AUTO_INCREMENT PRIMARY KEY ,
-  `name` CHAR(255)
+
+CREATE TABLE category(
+  id INT AUTO_INCREMENT PRIMARY KEY ,
+  name CHAR(255)
 );
 
 CREATE TABLE `lot`(

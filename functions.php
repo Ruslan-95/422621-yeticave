@@ -24,7 +24,7 @@ function includeTemplate($template, $array){
  * Возвращает время до полуночи текущего дня в формате "чч:мм"
  * @return string
  */
-function lot_time_remaining(){
+function lotTimeRemaining(){
     date_default_timezone_set('Europe/Moscow');
     $tomorrow = strtotime('tomorrow midnight');
     $now = time();
@@ -111,11 +111,10 @@ function valide($obj)
  * @return object
  */
 function checkConnectToDatabase() {
-    $resource = mysqli_connect('localhost', 'root', '', 'yeticave');
+    $resource = mysqli_connect('localhost', 'root', '', 'YetiCave');
 
     if (!$resource) {
                 header('HTTP/1.0 500 Internal Server Error');
-                header('Location: /500.html');
     } else {
         return $resource;
     }
